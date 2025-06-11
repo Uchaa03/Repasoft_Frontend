@@ -1,3 +1,4 @@
+import './assets/sass/main.css';
 
 function App() {
 
