@@ -19,7 +19,7 @@ import TechCreateRepair from "../pages/technician/TechCreateRepair.jsx";
 import ClientRepairs from "../pages/client/ClientRepairs.jsx";
 import Error404 from "../pages/Error404.jsx";
 
-const router = createBrowserRouter([
+export const router = createBrowserRouter([
     {
         //PublicRoutes
         element: <PublicLayout/>,

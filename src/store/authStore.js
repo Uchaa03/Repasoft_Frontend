@@ -1,5 +1,5 @@
 import {create} from "zustand";
-import {persist} from "zustand/middleware/persist";
+import {persist} from "zustand/middleware";
 
 //Create store for userData with localstorage persist.
 const useAuthStore = create(persist(

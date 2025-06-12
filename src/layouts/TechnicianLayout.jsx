@@ -1,8 +1,9 @@
 import React from 'react'
+import {Outlet} from "react-router-dom";
 
 const TechnicianLayout = () => {
     return (
-        <div>TechnicianLayout</div>
+        <Outlet/>
     )
 }
 export default TechnicianLayout

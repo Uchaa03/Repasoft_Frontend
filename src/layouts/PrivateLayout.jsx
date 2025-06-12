@@ -16,4 +16,5 @@ const PrivateLayout = () => {
 
     return <Outlet />;
 }
+
 export default PrivateLayout
