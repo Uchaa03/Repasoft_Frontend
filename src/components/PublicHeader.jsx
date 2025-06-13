@@ -1,17 +1,36 @@
-import React, { useState } from 'react';
-import { Link } from 'react-router-dom';
+import React, { useState, useEffect, useRef } from 'react';
+import { Link, useLocation } from 'react-router-dom';
 
 const PublicHeader = () => {
     const [isMenuOpen, setIsMenuOpen] = useState(false);
+    const location = useLocation();
+    const menuRef = useRef();
 
     const toggleMenu = () => setIsMenuOpen(prev => !prev);
 
+    // Reset state
+    useEffect(() => {
+        setIsMenuOpen(false);
+    }, [location]);
+
+    // Close Menu
+    useEffect(() => {
+        const handleClickOutside = (event) => {
+            if (menuRef.current && !menuRef.current.contains(event.target)) {
+                setIsMenuOpen(false);
+            }
+        };
+        document.addEventListener('mousedown', handleClickOutside);
+        return () => {
+            document.removeEventListener('mousedown', handleClickOutside);
+        };
+    }, []);
+
     return (
-        <header className="header">
+        <header className="header" ref={menuRef}>
             <Link to="/">
                 <img className="header__logo" src="/img/Logo.svg" alt="Logo de la App" />
             </Link>
-
             <button
                 className="header__hamburger"
                 aria-label="Toggle menu"
