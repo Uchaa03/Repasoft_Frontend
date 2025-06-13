@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, {useState} from "react";
 import { Formik, Field, Form } from "formik";
 import * as Yup from "yup";
 import { verifyCode } from "../hooks/apiCalls.js";
@@ -9,9 +9,13 @@ import {useRedirectAfterAuth} from "../hooks/useRedirectAfterAuth.js";
 
 const codeValidation = Yup.string().required("El código es obligatorio");
 
-const VerificationCodeForm = ({ userId }) => {
+const VerificationCodeForm = ({ userId, onVerificationFailed}) => {
     const [isLoading, setIsLoading] = useState(false);
     const [toast, setToast] = useState(null);
+    const redirect = useRedirectAfterAuth();
+    const { setAuthData } = useAuthStore();
+
+    console.log(userId)
 
     const handleSubmit = async (values, { resetForm }) => {
         setIsLoading(true);
@@ -24,13 +28,15 @@ const VerificationCodeForm = ({ userId }) => {
                 type: "success",
             });
             resetForm();
-            useAuthStore().getState().setState({token, role, requires_password_change});
-            useRedirectAfterAuth(role, requires_password_change);
+            setAuthData(token, role, requires_password_change);
+            redirect(role, requires_password_change);
         } catch (error) {
+            console.log(error);
             setToast({
                 message: error.response?.data?.error || error.message || "Error al verificar el código",
                 type: "error",
             });
+            onVerificationFailed()
         } finally {
             setIsLoading(false);
         }

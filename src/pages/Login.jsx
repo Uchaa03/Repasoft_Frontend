@@ -12,11 +12,12 @@ const Login = () => {
     const [isLoading, setIsLoading] = useState(false);
     const [toast, setToast] = useState(null);
     const [userId, setUserId] = useState(null);
+    const [verificationFailed, setVerificationFailed] = useState(false);
 
     const handleSubmit = async (values, { resetForm }) => {
         setIsLoading(true);
         setToast(null);
-
+        setVerificationFailed(false);
 
         try {
             const result = await login(values.email, values.password);
@@ -37,8 +38,13 @@ const Login = () => {
         }
     };
 
-    if (userId) {
-        return <VerificationCodeForm userId={userId} />;
+    if (userId && !verificationFailed) {
+        return (
+            <VerificationCodeForm
+                userId={userId}
+                onVerificationFailed={() => setVerificationFailed(true)}
+            />
+        );
     }
 
     return (

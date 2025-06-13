@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import FormCard from "../components/FormCard.jsx";
-import { Link } from "react-router-dom";
+import {Link, useNavigate} from "react-router-dom";
 import { Field, Form, Formik } from "formik";
 import {
     emailValidation,
@@ -24,6 +24,7 @@ const Register = () => {
     const [isLoading, setIsLoading] = useState(false);
     const [toast, setToast] = useState(null);
     const [userId, setUserId] = useState(null);
+    const navigate = useNavigate();
 
     const handleSubmit = async (values, { resetForm }) => {
         setIsLoading(true);
@@ -48,13 +49,17 @@ const Register = () => {
                 message: errorMessage,
                 type: "error",
             });
+
         } finally {
             setIsLoading(false);
         }
     };
+    const handleVerificationFailed = () => {
+        navigate("/login");
+    };
 
     if (userId) {
-        return <VerificationCodeForm userId={userId} />;
+        return <VerificationCodeForm userId={userId} onVerificationFailed={handleVerificationFailed}/>;
     }
 
     return (
