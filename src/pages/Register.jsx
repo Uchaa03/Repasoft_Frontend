@@ -1,16 +1,17 @@
-import React, { useState } from 'react';
-import FormCard from "../components/forms/FormCard.jsx";
+import React, { useState } from "react";
+import FormCard from "../components/FormCard.jsx";
 import { Link } from "react-router-dom";
 import { Field, Form, Formik } from "formik";
 import {
     emailValidation,
     passwordValidation,
     usernameValidation,
-    passwordVerificationValidation
+    passwordVerificationValidation,
 } from "../hooks/validationSchemaHook.js";
-import * as Yup from 'yup';
+import * as Yup from "yup";
 import { register } from "../hooks/apiCalls.js";
 import MessageToast from "../components/MessageToast.jsx";
+import VerificationCodeForm from "../components/VerificationCodeForm.jsx";
 
 export const registerSchema = Yup.object({
     username: usernameValidation,
@@ -22,28 +23,39 @@ export const registerSchema = Yup.object({
 const Register = () => {
     const [isLoading, setIsLoading] = useState(false);
     const [toast, setToast] = useState(null);
+    const [userId, setUserId] = useState(null);
 
     const handleSubmit = async (values, { resetForm }) => {
         setIsLoading(true);
         setToast(null);
 
         try {
-            const result = await register(values.username, values.email, values.password, values.confirmPassword);
+            const result = await register(
+                values.username,
+                values.email,
+                values.password,
+                values.confirmPassword
+            );
             setToast({
                 message: result.message || "¡Registro exitoso!",
-                type: "success"
+                type: "success",
             });
+            setUserId(result.user_id)
             resetForm();
         } catch (error) {
             const errorMessage = error.response?.data?.error || error.message;
             setToast({
                 message: errorMessage,
-                type: "error"
+                type: "error",
             });
         } finally {
             setIsLoading(false);
         }
     };
+
+    if (userId) {
+        return <VerificationCodeForm userId={userId} />;
+    }
 
     return (
         <main>
@@ -54,16 +66,18 @@ const Register = () => {
                     <p>Accede</p>
                 </Link>
                 <Formik
-                    initialValues={{ username: '', email: '', password: '', confirmPassword: '' }}
+                    initialValues={{ username: "", email: "", password: "", confirmPassword: "" }}
                     validationSchema={registerSchema}
                     onSubmit={handleSubmit}
                 >
                     {({ errors, touched, isValid }) => (
                         <Form className="form--register">
                             <fieldset className="form__field--register">
-                                <label htmlFor="username" className="field__label">Nombre de usuario</label>
+                                <label htmlFor="username" className="field__label">
+                                    Nombre de usuario
+                                </label>
                                 <Field
-                                    className={`field__input ${touched.username && errors.username ? 'error' : ''}`}
+                                    className={`field__input ${touched.username && errors.username ? "error" : ""}`}
                                     type="text"
                                     id="username"
                                     name="username"
@@ -74,9 +88,11 @@ const Register = () => {
                                 )}
                             </fieldset>
                             <fieldset className="form__field--register">
-                                <label htmlFor="email" className="field__label">Correo Electrónico</label>
+                                <label htmlFor="email" className="field__label">
+                                    Correo Electrónico
+                                </label>
                                 <Field
-                                    className={`field__input ${touched.email && errors.email ? 'error' : ''}`}
+                                    className={`field__input ${touched.email && errors.email ? "error" : ""}`}
                                     type="email"
                                     id="email"
                                     name="email"
@@ -87,9 +103,11 @@ const Register = () => {
                                 )}
                             </fieldset>
                             <fieldset className="form__field--register">
-                                <label htmlFor="password" className="field__label">Contraseña</label>
+                                <label htmlFor="password" className="field__label">
+                                    Contraseña
+                                </label>
                                 <Field
-                                    className={`field__input ${touched.password && errors.password ? 'error' : ''}`}
+                                    className={`field__input ${touched.password && errors.password ? "error" : ""}`}
                                     type="password"
                                     id="password"
                                     name="password"
@@ -100,9 +118,11 @@ const Register = () => {
                                 )}
                             </fieldset>
                             <fieldset className="form__field--register">
-                                <label htmlFor="confirmPassword" className="field__label">Confirmar Contraseña</label>
+                                <label htmlFor="confirmPassword" className="field__label">
+                                    Confirmar Contraseña
+                                </label>
                                 <Field
-                                    className={`field__input ${touched.confirmPassword && errors.confirmPassword ? 'error' : ''}`}
+                                    className={`field__input ${touched.confirmPassword && errors.confirmPassword ? "error" : ""}`}
                                     type="password"
                                     id="confirmPassword"
                                     name="confirmPassword"
@@ -117,7 +137,7 @@ const Register = () => {
                                 type="submit"
                                 disabled={!isValid || isLoading}
                             >
-                                {isLoading ? 'Cargando...' : 'Regístrate'}
+                                {isLoading ? "Cargando..." : "Regístrate"}
                             </button>
                         </Form>
                     )}

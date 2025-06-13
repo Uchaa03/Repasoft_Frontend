@@ -18,23 +18,26 @@ import TechRepairs from "../pages/technician/TechRepairs.jsx";
 import TechCreateRepair from "../pages/technician/TechCreateRepair.jsx";
 import ClientRepairs from "../pages/client/ClientRepairs.jsx";
 import Error404 from "../pages/Error404.jsx";
+import ChangePassword from "../pages/ChangePassword.jsx";
 
 export const router = createBrowserRouter([
     {
-        //PublicRoutes
-        element: <PublicLayout/>,
+        // Public routes
+        element: <PublicLayout />,
         errorElement: <Error404 />,
         children: [
-            {path: '/', element: <Home/>},
-            {path: '/login', element: <Login/>},
-            {path: '/register', element: <Register/>}
+            { path: '/', element: <Home /> },
+            { path: '/login', element: <Login /> },
+            { path: '/register', element: <Register /> }
         ]
     },
     {
-        element: <PrivateLayout/>,
+        element: <PrivateLayout />,
         children: [
+            //Route for change-password
+            { path: '/change-password', element: <ChangePassword /> },
+            // Admin routes
             {
-                // Admin routes
                 element: <AdminLayout />,
                 children: [
                     { path: '/admin/dashboard', element: <AdminDashboard /> },
@@ -44,23 +47,23 @@ export const router = createBrowserRouter([
                     { path: '/admin/create-technician', element: <AdminCreateTechnician /> },
                 ]
             },
+            // Technician routes
             {
-                // Technicians routes
                 element: <TechnicianLayout />,
                 children: [
-                    { path: '/tech/dashboard', element:  <TechDashboard /> },
-                    { path: '/tech/parts', element:  <TechParts /> },
-                    { path: '/tech/repairs', element:  <TechRepairs /> },
-                    { path: '/tech/create-repair', element:  <TechCreateRepair /> },
+                    { path: '/tech/dashboard', element: <TechDashboard /> },
+                    { path: '/tech/parts', element: <TechParts /> },
+                    { path: '/tech/repairs', element: <TechRepairs /> },
+                    { path: '/tech/create-repair', element: <TechCreateRepair /> },
                 ]
             },
+            // Client routes
             {
-                // Clients routes
                 element: <ClientLayout />,
                 children: [
-                    { path: '/client/repairs', element:  <ClientRepairs /> },
+                    { path: '/client/repairs', element: <ClientRepairs /> },
                 ]
             }
         ]
     }
-])
+]);

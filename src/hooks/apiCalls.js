@@ -31,3 +31,11 @@ export const register = async (name, email, password, password_confirmation) => 
         throw error;
     }
 };
+
+export const verifyCode = async (userId, code) => {
+    const response = await axiosInstance.post('/api/auth/verify-2fa', {
+        userId,
+        code,
+    });
+    return response.data;
+};

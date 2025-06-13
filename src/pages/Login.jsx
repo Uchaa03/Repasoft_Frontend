@@ -1,19 +1,22 @@
 import React, { useState } from 'react';
-import FormCard from "../components/forms/FormCard.jsx";
+import FormCard from "../components/FormCard.jsx";
 import { Link } from "react-router-dom";
 import { Field, Form, Formik } from "formik";
 import { emailValidation, passwordValidation } from "../hooks/validationSchemaHook.js";
 import * as Yup from 'yup';
 import { login } from "../hooks/apiCalls.js";
 import MessageToast from "../components/MessageToast.jsx";
+import VerificationCodeForm from "../components/VerificationCodeForm.jsx";
 
 const Login = () => {
     const [isLoading, setIsLoading] = useState(false);
     const [toast, setToast] = useState(null);
+    const [userId, setUserId] = useState(null);
 
     const handleSubmit = async (values, { resetForm }) => {
         setIsLoading(true);
         setToast(null);
+
 
         try {
             const result = await login(values.email, values.password);
@@ -21,6 +24,7 @@ const Login = () => {
                 message: result.message || "¡Acceso exitoso!",
                 type: "success"
             });
+            setUserId(result.user_id);
             resetForm();
         } catch (error) {
             const errorMessage = error.response?.data?.error || error.message;
@@ -32,6 +36,10 @@ const Login = () => {
             setIsLoading(false);
         }
     };
+
+    if (userId) {
+        return <VerificationCodeForm userId={userId} />;
+    }
 
     return (
         <main>
