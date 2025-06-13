@@ -1,0 +1,15 @@
+@use '../utilities/mixins' as *;
+
+.form {
+  @include forms-display;
+}
+
+.field__input {
+  @include input-style;
+}
+
+.form__submit {
+  @include buttonWarning(1rem 4rem, 2rem, 1rem, );
+  align-self: flex-end;
+  margin-top: 7rem;
+}

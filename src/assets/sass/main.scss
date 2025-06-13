@@ -14,7 +14,13 @@
 @use "components/publicHeader";
 @use "components/publicFooter";
 @use "components/articleCard";
+@use "components/formsCard";
+@use "components/messageToast";
+
+
 
 
 //Pages
 @use "pages/home";
+@use "pages/login";
+@use "pages/register";

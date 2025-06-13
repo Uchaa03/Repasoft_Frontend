@@ -1,0 +1,16 @@
+@use '../utilities/mixins' as *;
+
+.form--register {
+  @include forms-display;
+    padding: 1.2rem 7rem;
+}
+
+.field__input--register {
+  @include input-style;
+}
+
+.form__submit--register {
+  @include buttonWarning(1rem 4rem, 2rem, 1rem);
+  align-self: flex-end;
+  margin-top: 0.5rem;
+}
