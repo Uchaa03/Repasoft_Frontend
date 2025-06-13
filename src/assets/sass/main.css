@@ -364,7 +364,7 @@ main {
   }
 }
 
-.card {
+.article-card {
   display: flex;
   flex-direction: row;
   align-items: stretch;
@@ -379,16 +379,16 @@ main {
   animation: fadeInUp 0.6s ease-out 1s forwards;
   opacity: 0;
 }
-.card--reverse {
+.article-card--reverse {
   flex-direction: row-reverse;
 }
-.card__image {
+.article-card__image {
   width: 10rem;
   height: 10rem;
   margin: auto 2rem;
   object-fit: contain;
 }
-.card__content {
+.article-card__content {
   flex: 1 1 auto;
   padding: 2rem;
   display: flex;
@@ -399,14 +399,14 @@ main {
   border-radius: 1rem;
   text-align: left;
 }
-.card__title {
+.article-card__title {
   font-family: "M PLUS Rounded 1c", sans-serif;
   font-size: 2.5rem;
   font-weight: 700;
   margin-bottom: 1rem;
   color: #fff;
 }
-.card__desc {
+.article-card__desc {
   font-family: "Nunito Sans", sans-serif;
   font-size: 1.2rem;
   font-weight: 500;
@@ -414,49 +414,49 @@ main {
   margin: 0;
 }
 @media (max-width: 768px) {
-  .card {
+  .article-card {
     flex-direction: column;
     margin: 1rem 2rem;
   }
-  .card--reverse {
+  .article-card--reverse {
     flex-direction: column;
   }
-  .card__image, .card__content {
+  .article-card__image, .article-card__content {
     margin: 1rem;
     border-radius: 16px;
     text-align: center;
   }
-  .card__image {
+  .article-card__image {
     width: 80px;
     height: 80px;
     margin: 1rem auto 0 auto;
   }
-  .card__content {
+  .article-card__content {
     padding: 1rem 1.5rem 2rem 1.5rem;
   }
-  .card__title {
+  .article-card__title {
     font-size: 1.6rem;
   }
-  .card__desc {
+  .article-card__desc {
     font-size: 1rem;
   }
 }
 @media (max-width: 480px) {
-  .card {
+  .article-card {
     margin: 1.5rem 1rem;
   }
-  .card__content {
+  .article-card__content {
     padding: 1rem 1.2rem 1.8rem 1.2rem;
   }
-  .card__image {
+  .article-card__image {
     width: 70px;
     height: 70px;
     margin: 1rem auto 0 auto;
   }
-  .card__title {
+  .article-card__title {
     font-size: 1.4rem;
   }
-  .card__desc {
+  .article-card__desc {
     font-size: 0.9rem;
   }
 }
@@ -699,23 +699,23 @@ main {
   }
 }
 
-.cards {
+.article-cards {
   max-width: 1200px;
   margin: 0 auto;
   padding: 0 5rem;
 }
 @media (max-width: 1024px) and (min-width: 769px) {
-  .cards {
+  .article-cards {
     padding: 0 3rem;
   }
 }
 @media (max-width: 768px) and (min-width: 481px) {
-  .cards {
+  .article-cards {
     padding: 0;
   }
 }
 @media (max-width: 480px) {
-  .cards {
+  .article-cards {
     padding: 0;
   }
 }

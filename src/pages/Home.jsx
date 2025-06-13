@@ -18,7 +18,7 @@ const Home = () => {
                 <button className="hero__button" onClick={() => navigate('/register')}>Empieza Ahora</button>
                 <img src="/img/HeroIcon.svg" alt="Icono decorativo para hero" className="hero__img"/>
             </section>
-            <section className="cards">
+            <section className="article-cards">
                 <ArticleCard
                     title="Gestiona tus Locales"
                     description="Crea y Gestiona tus locales de reparaciones desde una plataforma única, visualiza las ganancias y perdidas generales y de cada local para así llevar una buena gestión de tu empresa"

@@ -7,11 +7,11 @@ const ArticleCard = ({
                          reverse = false,
                      }) => {
     return (
-        <article className={`card${reverse ? ' card--reverse' : ''}`}>
-            <img className="card__image" src={image} alt={title} />
-            <div className="card__content">
-                <h2 className="card__title">{title}</h2>
-                <p className="card__desc">{description}</p>
+        <article className={`article-card${reverse ? ' article-card--reverse' : ''}`}>
+            <img className="article-card__image" src={image} alt={title} />
+            <div className="article-card__content">
+                <h2 className="article-card__title">{title}</h2>
+                <p className="article-card__desc">{description}</p>
             </div>
         </article>
     );

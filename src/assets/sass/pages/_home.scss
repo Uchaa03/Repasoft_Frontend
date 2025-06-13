@@ -140,7 +140,7 @@
   }
 }
 
-.cards {
+.article-cards {
   max-width: 1200px;
   margin: 0 auto;
   padding: 0 5rem;
@@ -148,11 +148,9 @@
   @media (max-width: 1024px) and (min-width: 769px) {
     padding: 0 3rem;
   }
-
   @media (max-width: 768px) and (min-width: 481px) {
     padding: 0;
   }
-
   @media (max-width: 480px) {
     padding: 0;
   }
