@@ -1,0 +1,35 @@
+.footer {
+  background-color: var(--color-neutral);
+  box-shadow: 0 -6px 12px rgba(0, 0, 0, 0.2);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  padding: 1rem 5rem;
+
+  &__logo {
+    height: 3rem;
+    width: auto;
+  }
+
+  &__cc-link {
+    font-size: 1.5rem;
+    text-decoration: none;
+    font-family: "Nunito Sans", sans-serif;
+    font-weight: 700;
+    color: var(--color-contrast);
+  }
+
+  @media (max-width: 768px) {
+    padding: 0.5rem 2.5rem;
+
+    &__logo {
+      height: 2rem;
+      width: auto;
+    }
+
+    &__cc-link {
+      font-size: 1.5rem;
+    }
+  }
+}

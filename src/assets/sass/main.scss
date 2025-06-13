@@ -6,6 +6,13 @@
 
 // Utilities
 @use "utilities/variables";
+@use "utilities/mixins";
+@use "utilities/keyframes";
+
 
 // Components
 @use "components/publicHeader";
+@use "components/publicFooter";
+
+//Pages
+@use "pages/home";
