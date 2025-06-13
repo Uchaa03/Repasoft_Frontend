@@ -1,0 +1,126 @@
+// Arreglar el problema del sidebar
+.dashboard-content {
+  padding: 3rem 3rem 3rem 120px; // Mismo ancho que el sidebar + un poco de espacio
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+}
+
+.dashboard-title {
+  font-size: 3rem;
+  font-family: "M PLUS Rounded 1c", serif;
+  font-weight: 800;
+  margin-bottom: 1rem;
+}
+
+// Grid ajustado: gráfica menos ancha, botones mejor distribuidos
+.dashboard-grid {
+  display: grid;
+  grid-template-columns: 2fr 180px; // Cambié de "1fr 200px" a "2fr 180px"
+  gap: 2rem;
+  height: calc(100vh - 12rem); // Altura fija para distribución de botones
+  align-items: stretch;
+}
+
+.dashboard-card {
+  background-color: var(--color-secondary);
+  border-radius: 12px;
+  padding: 1rem;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+
+  .admin-finance-chart {
+    background: var(--color-neutral);
+    border-radius: 8px 8px 0 0; // Solo esquinas superiores
+    padding: 1rem;
+    flex: 1;
+  }
+}
+
+.dashboard-card-footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem;
+  background: var(--color-neutral); // Mismo fondo que la gráfica
+  border-radius: 0 0 8px 8px; // Solo esquinas inferiores
+  margin: 0;
+
+  .dashboard-label {
+    font-family: "M PLUS Rounded 1c", serif;
+    font-size: 1.2rem;
+    font-weight: 500;
+  }
+
+  .dashboard-total-income {
+    background-color: var(--color-success);
+    color: var(--color-neutral);
+    padding: 0.5rem 1.5rem;
+    border-radius: 4px;
+    font-weight: bold;
+  }
+
+  .dashboard-total-expense {
+    background-color: var(--color-error);
+    color: var(--color-neutral);
+    padding: 0.5rem 1.5rem;
+    border-radius: 4px;
+    font-weight: bold;
+  }
+}
+
+// Botones alineados y distribuidos uniformemente
+.dashboard-actions {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between; // Distribuye el espacio uniformemente
+  height: 100%; // Ocupa toda la altura disponible
+  gap: 0; // Sin gap fijo, que se distribuya automáticamente
+
+  .dashboard-action {
+    background-color: var(--color-secondary);
+    color: var(--color-neutral);
+    border: none;
+    padding: 2rem 1rem; // Padding más generoso
+    border-radius: 12px;
+    font-weight: bold;
+    font-size: 1.2rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    transition: all 0.2s ease;
+    cursor: pointer;
+    flex: 1; // Cada botón ocupa el mismo espacio
+
+    img {
+      width: 48px;
+      height: 48px;
+    }
+
+    // Espaciado entre botones
+    &:not(:last-child) {
+      margin-bottom: 1rem;
+    }
+
+    &:hover {
+      background-color: var(--color-contrast);
+      transform: translateY(-2px);
+    }
+  }
+}
+
+// Media query para pantallas más pequeñas
+@media (max-width: 1200px) {
+  .dashboard-content {
+    margin-left: 240px; // Sidebar más estrecho en pantallas pequeñas
+  }
+
+  .dashboard-grid {
+    grid-template-columns: 3fr 160px; // Más espacio para la gráfica
+  }
+}

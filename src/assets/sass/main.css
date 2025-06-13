@@ -565,7 +565,7 @@ main {
   }
 }
 .sidebar {
-  position: fixed;
+  position: absolute;
   left: 0;
   top: 0;
   width: 80px;
@@ -1054,6 +1054,119 @@ main {
 .form__submit--register:hover {
   background: var(--color-warning);
   color: var(--color-neutral);
+}
+
+.dashboard-content {
+  padding: 3rem 3rem 3rem 120px;
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+}
+
+.dashboard-title {
+  font-size: 3rem;
+  font-family: "M PLUS Rounded 1c", serif;
+  font-weight: 800;
+  margin-bottom: 1rem;
+}
+
+.dashboard-grid {
+  display: grid;
+  grid-template-columns: 2fr 180px;
+  gap: 2rem;
+  height: calc(100vh - 12rem);
+  align-items: stretch;
+}
+
+.dashboard-card {
+  background-color: var(--color-secondary);
+  border-radius: 12px;
+  padding: 1rem;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+.dashboard-card .admin-finance-chart {
+  background: var(--color-neutral);
+  border-radius: 8px 8px 0 0;
+  padding: 1rem;
+  flex: 1;
+}
+
+.dashboard-card-footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem;
+  background: var(--color-neutral);
+  border-radius: 0 0 8px 8px;
+  margin: 0;
+}
+.dashboard-card-footer .dashboard-label {
+  font-family: "M PLUS Rounded 1c", serif;
+  font-size: 1.2rem;
+  font-weight: 500;
+}
+.dashboard-card-footer .dashboard-total-income {
+  background-color: var(--color-success);
+  color: var(--color-neutral);
+  padding: 0.5rem 1.5rem;
+  border-radius: 4px;
+  font-weight: bold;
+}
+.dashboard-card-footer .dashboard-total-expense {
+  background-color: var(--color-error);
+  color: var(--color-neutral);
+  padding: 0.5rem 1.5rem;
+  border-radius: 4px;
+  font-weight: bold;
+}
+
+.dashboard-actions {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: 100%;
+  gap: 0;
+}
+.dashboard-actions .dashboard-action {
+  background-color: var(--color-secondary);
+  color: var(--color-neutral);
+  border: none;
+  padding: 2rem 1rem;
+  border-radius: 12px;
+  font-weight: bold;
+  font-size: 1.2rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  transition: all 0.2s ease;
+  cursor: pointer;
+  flex: 1;
+}
+.dashboard-actions .dashboard-action img {
+  width: 48px;
+  height: 48px;
+}
+.dashboard-actions .dashboard-action:not(:last-child) {
+  margin-bottom: 1rem;
+}
+.dashboard-actions .dashboard-action:hover {
+  background-color: var(--color-contrast);
+  transform: translateY(-2px);
+}
+
+@media (max-width: 1200px) {
+  .dashboard-content {
+    margin-left: 240px;
+  }
+  .dashboard-grid {
+    grid-template-columns: 3fr 160px;
+  }
 }
 
 /*# sourceMappingURL=main.css.map */
