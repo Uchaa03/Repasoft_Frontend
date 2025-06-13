@@ -239,6 +239,7 @@ main {
     opacity: 1;
     transform: translateY(0);
     pointer-events: auto;
+    z-index: 1000;
   }
   .header__nav--mobile .nav__button {
     background-color: var(--color-primary);
@@ -454,6 +455,9 @@ main {
   .hero__button {
     width: 100%;
     text-align: center;
+  }
+  .hero__img {
+    justify-self: center;
   }
 }
 @media (max-width: 480px) {
